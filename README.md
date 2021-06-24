@@ -14,6 +14,7 @@
 - [Задание](#Задание)
 - [Формат компонентов](#Формат-компонентов)
 - [Механзим парсера json](#Механзим-парсера-json)
+- [Форма регистрации](#Форма-регистрации)
 
 ## Задание
 <a name="Задание"></a> 
@@ -84,3 +85,91 @@ RegistrationButton: {
 ```
 ## Механзим парсера json
 <a name="Механзим-парсера-json"><a/>
+Парсер по своей сути проходит по всей структуре json, пока не дойдёт до последних уровней, где не будет вложенных компонентов. Происходит рекурсивный обход.
+Функция jsonParser:
+```
+function jsonParser() {
+  // Json
+  this.json = window.jsonData;
+
+  function setAttributes(component, attributes) {
+    if (attributes === undefined) return;
+    attributes.map((e) => {
+      if (e[0] === "text") component.innerText = e[1];
+      component.setAttribute(e[0], e[1]);
+    });
+  }
+
+  function setHandlers(component, handlers) {
+    if (handlers === undefined) return;
+    handlers.map((e) => {
+      component.addEventListener(e[0], e[1]);
+    });
+  }
+
+  function setCustomStyles(component, custom_styles) {
+    if (custom_styles === undefined) return;
+    custom_styles.map((e) => {
+      component.classList.add(e);
+    });
+  }
+
+  function setComponents(parent_id, components) {
+    if (components === undefined) return;
+    components.map((e) => {
+      createComponent(
+        parent_id,
+        e.tag,
+        e.attributes,
+        e.custom_styles,
+        e.handlers,
+        e.components
+      );
+    });
+  }
+
+  function createComponent(
+    parent_id,
+    tag,
+    attributes,
+    custom_styles,
+    handlers,
+    components
+  ) {
+    const parent = document.getElementById(parent_id);
+    const component = document.createElement(tag);
+
+    setAttributes(component, attributes);
+    setCustomStyles(component, custom_styles);
+    setHandlers(component, handlers);
+    parent.appendChild(component);
+
+    setComponents(component.id, components);
+  }
+
+  return [createComponent];
+}
+```
+Сеттеры:
+* setAttributes - функция, которая мапит attributes и присваиввает их компоненту.
+* setHandlers - функция, которая мапит handlers и присваиввает их компоненту.
+* setCustomStyles - функция, которая мапит custom_styles и добавляет компоненте.
+* setComponents - функция сетает вложенные компоненты.
+
+Функция createComponent - сетает все свойства компоненту создаёт её и присваивает родителю.
+
+## Форма регистрации
+<a name="Форма-регистрации"></a> 
+Я использовал стиль библиотеки [VKUI](https://vkcom.github.io/VKUI/).
+Форма: 
+![image](https://user-images.githubusercontent.com/44378669/123283993-902f1900-d514-11eb-9b97-3006ee6aab9d.png)
+
+✅ Адаптивность.
+  
+✅ Есть светлая и тёмная тема.
+
+✅ Реализована локализация.
+
+✅ При перезагрузке страницы состаяния сохраняются. Используется LocalStorage.
+
+✅ Инкапсуляция стилей.

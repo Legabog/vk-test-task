@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.footer span {
+  padding-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.154;
+  font-weight: 400;
+}

@@ -4,5 +4,5 @@
   </a>
 </p>
 <h1 align="center">
-  Vk forntend test task &middot;  <img alt="MIT-logo" src="https://img.shields.io/badge/license-MIT-green.svg" /> 
+  VK-frontend-test-task &middot;  <img alt="MIT-logo" src="https://img.shields.io/badge/license-MIT-green.svg" /> 
 </h1>

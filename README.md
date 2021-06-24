@@ -6,3 +6,6 @@
 <h1 align="center">
   VK-frontend-test-task &middot;  <img alt="MIT-logo" src="https://img.shields.io/badge/license-MIT-green.svg" /> 
 </h1>
+<h1>Тестовое задание для стажёра в команду фронтенд-инфраструктуры</h1>
+<h1>Генератор форм</h1>
+<span>Напишите код, который будет преобразовывать JSON с описанием контента формы — в готовую вёрстку.</span>

@@ -271,7 +271,11 @@ window.setTextToComponents = () => {
     locales[`${localStorage.language}`].footer.author;
 };
 
-const language = window.navigator.language.slice(0, 2);
+function setDefaultLanguage() {
+  const language = window.navigator.language.slice(0, 2);
 
-// default language
-if (!localStorage.language) localStorage.language = language;
+  // default language
+  if (!localStorage.language) localStorage.language = language;
+}
+
+setDefaultLanguage()

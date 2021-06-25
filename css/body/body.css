@@ -207,7 +207,8 @@
   border: 1px solid #5c9ce6;
 }
 
-@media only screen and (max-width: 1200px) {
+/* portrait */
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
   .classic-form {
     width: 35%;
   }
@@ -242,5 +243,30 @@
   .classic-form {
     width: 80%;
     height: 400px;
+  }
+}
+/* landscape */
+
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+  .classic-form {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-height: 400px) and (orientation: landscape) {
+  .classic-form {
+    height: 250px;
+  }
+}
+
+@media only screen and (max-height: 320px) and (orientation: landscape) {
+  .classic-form {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-height: 280px) and (orientation: landscape) {
+  .classic-form {
+    height: 180px;
   }
 }
